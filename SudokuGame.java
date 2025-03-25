@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class SudokuGame {
@@ -23,6 +24,7 @@ public class SudokuGame {
             System.out.println("3. Verificar solução");
             System.out.println("4. Sair");
             System.out.println("5. Para saber as regras");
+            System.out.println("6. Selecione aqui para dicas");
             System.out.print("Escolha uma opção: ");
             
             int choice = scanner.nextInt();
@@ -66,6 +68,19 @@ public class SudokuGame {
                     new SudokuRegras().mostrarRegras();
                     break;
 
+                case 6:
+                System.out.print("Digite linha e coluna para dica (ex: 3 5): ");
+                int rowDica = scanner.nextInt() - 1;
+                int colDica = scanner.nextInt() - 1;
+                
+                List<Integer> dicas = board.getNumerosPossiveis(rowDica, colDica);
+                if (dicas.isEmpty()) {
+                    System.out.println("Esta célula já está preenchida!");
+                } else {
+                    System.out.println("Números possíveis: " + dicas);
+                }
+                break;
+                
                 default:
                     System.out.println("Opção inválida!");
             }

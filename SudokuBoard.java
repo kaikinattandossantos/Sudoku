@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class SudokuBoard {
     private int[][] board;
     
@@ -37,7 +40,7 @@ public class SudokuBoard {
         }
     }
     
-    // Verifica se um movimento é válido
+    // Verifica se um movimento é válido baseado na regra de nao ocupar mesmo número 
     public boolean isValidMove(int row, int col, int num) {
         // Verifica linha e coluna
         for (int i = 0; i < 9; i++) {
@@ -75,4 +78,23 @@ public class SudokuBoard {
     public int[][] getBoard() {
         return board;
     }
+
+    // Lista do framework Collect para criar Array
+    public List<Integer> getNumerosPossiveis(int row, int col) {
+    List<Integer> possiveis = new ArrayList<>(); // Criou objeto em array (espaço na memória) de ArrayList chamada possiveis para manipular
+    
+    // Verifica se está vazia
+    if (board[row][col] != 0) {
+        return possiveis;
+    }
+    
+    // Verifica quais números de 1 a 9 são válidos
+    for (int num = 1; num <= 9; num++) {
+        if (isValidMove(row, col, num)) {
+            possiveis.add(num); // Método college para adicionar dentro da array
+        }
+    }
+    
+    return possiveis;
+}
 }
