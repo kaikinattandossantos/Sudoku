@@ -22,6 +22,7 @@ public class SudokuGame {
             System.out.println("2. Remover número (linha coluna)");
             System.out.println("3. Verificar solução");
             System.out.println("4. Sair");
+            System.out.println("5. Para saber as regras");
             System.out.print("Escolha uma opção: ");
             
             int choice = scanner.nextInt();
@@ -60,7 +61,11 @@ public class SudokuGame {
                 case 4:
                     playing = false;
                     break;
-                    
+
+                case 5:
+                    new SudokuRegras().mostrarRegras();
+                    break;
+
                 default:
                     System.out.println("Opção inválida!");
             }
